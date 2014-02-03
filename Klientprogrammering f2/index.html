@@ -1,0 +1,23 @@
+<html>
+	<head>
+<script type="text/javascript">
+
+
+	function calculate(tal1, tal2){
+
+		var resultat = tal1 * document.getElementById("tal").value;
+		console.log(resultat);
+		return resultat;
+	}
+
+	//var minVar = calculate(13, prompt());
+	//console.log(minVar);
+
+</script>
+	</head>
+	<body>
+		<div id="mindiv"></div>
+		<input type="button" onclick="calculate(2, 2)" />
+		<input type="text" id="tal" />
+	</body>
+</html>

@@ -1,0 +1,90 @@
+<html>
+	<head>
+
+<script type="text/javascript">
+
+
+	console.log("Ta ppå dig skor");
+
+
+	var person1="Kalle";
+	var person2="Pelle";
+	var person3="Olle";
+
+	var personer=[];
+	//personer[0]="Kalle";
+	//personer[1]="Lisa";
+	
+	var personer2=[];
+	personer2.push("Fia");
+	personer2.push("Greta");
+	
+
+	personer.push("Lisa");
+	personer.push("Kalle");
+	personer.push("Åsa");
+
+	var arr=personer.concat(personer2);
+	
+
+	console.log(arr);
+	
+
+
+
+	for(var i=0;i<arr.length; i++){
+
+		if(arr[i]=="Greta"){
+			console.log(arr[i]+" position "+i);	
+		}
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+	var regn=false;
+	var sno=false;
+	var hagel=true;
+	var namn="Gustaf"
+	if(regn){
+		//Ta paraply
+		console.log("Ta med dig paraplyt för f-n");
+
+	}
+	else if(sno || hagel){
+		console.log("Ta på dig mössan");
+
+
+		if(2==2){
+			console.log("Japp");
+
+		}
+	}
+	else{
+		console.log("Ta på shorts");
+	}
+
+
+	console.log("Gå ut");
+
+
+</script>
+	</head>
+	<body>
+		<div id="mindiv"></div>
+		<input type="button" onclick="calculate(2, 2)" />
+		<input type="text" id="tal" />
+
+
+		Hej vilket fint väder det är
+
+	</body>
+</html>

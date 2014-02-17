@@ -1,0 +1,81 @@
+<html>
+	<head>
+
+<script type="text/javascript">
+	
+	
+function ajaxRequest(url, callback) {
+
+    var XHR = null;
+    if (XMLHttpRequest) {
+        XHR = new XMLHttpRequest();
+    } else {
+        XHR = new ActiveXObject("Microsoft.XMLHTTP"); 
+    }
+    XHR.onreadystatechange = function () {
+        if (XHR.readyState == 4 || XHR.readyState == "complete") {
+            if (XHR.status == 200) {
+                callback(XHR); 
+            } else {
+                alert("fel på servern");
+            }
+            
+        }
+    }
+    XHR.open("GET", url, true);
+    XHR.send(null);
+}
+
+
+function JSONPRequest(url) {
+    var s = document.createElement('script');
+    s.setAttribute('src', url);
+    document.getElementsByTagName('head')[0].appendChild(s);
+}
+
+
+function get(){
+	ajaxRequest("data.txt", bacon);
+}
+
+function bacon(XHR){
+	var mittObj=JSON.parse(XHR.responseText);
+	var txt="";
+	for(var i=0;i<mittObj.arenas.length;i++){
+		txt=txt+mittObj.arenas[i].name;
+	}
+	document.getElementById("mindiv").innerHTML=txt;
+}
+
+
+
+
+
+
+
+
+
+	function last(){
+		console.log("Jag kördes sist");
+	}
+	function first(){
+		console.log("Jag kördes först");
+	}
+	function middle(func){
+
+		console.log("Jag kördes nu");
+		console.log(func);
+	}
+	first();
+	middle(last);
+
+</script>
+	</head>
+	<body>
+		<div id="mindiv">Hejsan</div>
+
+		<input type="button" value="Visa" onclick="show()" />
+		<input type="button" value="Dölj" />
+		<input type="button" value="Hämta" onclick="get()" />
+	</body>
+</html>

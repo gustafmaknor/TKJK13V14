@@ -1,0 +1,25 @@
+{"arenas":[
+		{
+			"id":284908,
+			"name":"Kulturhuset Spira",
+			"adress":{
+				"street":"Gatan allan 43",
+				"zip":55343,
+				"city":"Halmstad"
+			},
+			"latitude":57.77783,
+			"longitude":14.17169
+		},
+		{
+			"id":284907,
+			"name":"Jönköpings konserthus",
+			"adress":{
+				"street":"Konsergatan 8",
+				"zip":55344,
+				"city":"Jönköping"
+			},
+			"latitude":57.78797,
+			"longitude":14.22888
+		}
+	]
+}

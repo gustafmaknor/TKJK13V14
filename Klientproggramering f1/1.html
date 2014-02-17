@@ -1,0 +1,22 @@
+<html>
+	<head>
+<script type="text/javascript">
+
+ //Text vi vill skriva ut
+ var txt="Åhhh vad fint, du tryckte på knappen";
+
+ //Funktion som sker när vi trycker på knappen
+ function print(){
+     //Divven vi vill lägga texten i
+     var mindiv=document.getElementById('mindiv');
+     mindiv.innerHTML=txt;
+     alert("Ta daaaa");
+ }
+
+</script>
+	</head>
+	<body>
+		<div id="mindiv"></div>
+		<input type="button" onclick="print()" />
+	</body>
+</html>

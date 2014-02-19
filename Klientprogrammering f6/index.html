@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+	<title>Test av formulärkontroller och fallbacks</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link href='http://fonts.googleapis.com/css?family=Lato:900|Open+Sans:300' rel='stylesheet' type='text/css'>
+	<meta charset="utf-8"/>
+</head>
+<body>
+	<h1>Webbläsar-attribut</h1>
+	<form action="" method="GET">
+		<label for="name">Namn</label>
+		<input id="name" name="name" type ="text"  required placeholder="Namnet kommer här"/>
+		<label for="email">E-post</label>
+		<input id="email" name="email" type ="email" autofocus required placeholder="gustaf@interfay.se"/>
+		<label for="color">Färgkod</label>
+		<input id="color" type ="text" name="color" required placeholder="#f00ba5" pattern="#?([a-f0-9]{6}|[a-f0-9]{3})"/>
+		<input type="submit" value="Skicka"/>
+	</form>
+</body>
+<script type="text/javascript" src="modernizr.js"></script>
+
+
+<script type="text/javascript">
+
+	Modernizr.load({
+		test:Modernizr.input.placeholder,
+		nope:"simple.js"
+	});
+
+	
+</script>
+</html>

@@ -17,17 +17,17 @@
 		<input id="color" type ="text" name="color" required placeholder="#f00ba5" pattern="#?([a-f0-9]{6}|[a-f0-9]{3})"/>
 		<input type="submit" value="Skicka"/>
 	</form>
-</body>
 <script type="text/javascript" src="modernizr.js"></script>
 
 
 <script type="text/javascript">
 
 	Modernizr.load({
-		test:Modernizr.input.placeholder,
+		test:Modernizr.input.placeholder && Modernizr.input.requir
 		nope:"simple.js"
 	});
 
 	
 </script>
+</body>
 </html>

@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head>
+	<title>Test av formulärkontroller och fallbacks</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link href='http://fonts.googleapis.com/css?family=Lato:900|Open+Sans:300' rel='stylesheet' type='text/css'>
+	<meta charset="utf-8"/>
+	<script type="text/javascript" src="helper.js"></script>
+	<script type="text/javascript">
+
+
+	//Prototypobjekt som används i konstruktorvarianten och Object.create()
+	var personPrototyp={
+		prata:function(){
+			alert("heja jag heter "+this.name+" och är "+this.age);
+		},
+		think:function(){
+
+		}
+	}
+
+
+	//Konstruktorn för typen Person
+	function Person(name, age){
+		this.name=name;
+		this.age=age;
+		this.presentation="Mitt namn är "+this.name;
+	}
+	//Koppla på prototypobjektet för att få funktionerna prata oh think
+	Person.prototype=personPrototyp;
+
+
+	//Instansiera med konstruktor
+	var person5=new Person("Olle", 43);
+	var person6=new Person("Bacon", 46);
+	
+
+
+	
+	//Instansieramed Object.create()
+	var person3=Object.create(personPrototyp);
+	person3.name="Lisa";
+	person3.age=23;
+
+	var person4=Object.create(personPrototyp);
+	person4.name="Fia";
+	person4.age=48;
+
+	//person3.prata();
+	//person4.prata();
+
+
+
+
+
+
+
+
+
+	//Skapa objekt utan instanser
+	var person1={
+		name:"Gustaf",
+		age:31,
+		length:177
+	}
+	var person2={
+		name:"Kalle",
+		age:31,
+		length:177
+	}
+
+
+	//person1.prata();
+	//person2.prata();
+
+
+
+
+
+
+
+	var classRoom=[];
+	classRoom.push(person1);
+	classRoom.push(person2);
+
+	for(var i=0;i<classRoom.length;i++){
+		classRoom[i].name;
+		classRoom[i].age;
+	}
+
+
+
+	helper.addEvent(window, 'load', function(){
+		helper.addEvent(document.getElementById('regForm'), 'submit',function(evt){
+			evt.stop();
+			register();
+		});
+	});
+
+	var register=function(){
+		var elems=helper.getByClass('regField', document);
+		var data={};
+		for(var i=0; i<elems.length; i++){
+			data[elems[i].name]=elems[i].value;
+		}
+		helper.jsonp('http://edunet.cust.bluerange.se/dice/user/create.aspx', function(res){
+			if(res.status==400){
+				console.log(res);
+			}
+			else{
+				alert("Kunde inte skapa användaren");
+			}
+		}, data);
+		
+	}
+	///[^A-ZÅÄÖ -]/i.test("Jag kan heta ole-petter medn inte Ha4k");
+</script>
+</head>
+<body>
+	<h1>Prata med API</h1>
+	<form action="" id="regForm" method="GET">
+		<label for="firstname">Förnamn</label>
+		<input id="firstname" name="firstname" class="regField" type ="text" autofocus  required placeholder="Förnamn"/>
+		<label for="lastname">Efternamn</label>
+		<input id="lastname" name="lastname" class="regField" type ="text"  required placeholder="Efternamn"/>
+		<label for="email">E-post</label>
+		<input id="email" name="email" class="regField" type ="email"  required placeholder="gustaf@interfay.se"/>
+		<label for="pwd">Lösenord</label>
+		<input id="pwd" type ="password" class="regField" name="pwd" required placeholder="Lösenord"/>
+		<input type="submit" value="Skicka"/>
+	</form>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<html>
+<head>
+
+<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript">
+window.onload=function(){
+	hide('innehall', 20000);
+
+	addEvent(document.getElementById('knapp'),'click', function(e){
+    	alert(this);
+    	e.stopPropagation();
+    	e.preventDefault();
+    });
+	addEvent(document.getElementById('div'),'click', function(e){
+    	alert(this);
+    });
+
+
+
+function addEvent(node, name, fn){
+    if(node.addEventListener){
+        node.addEventListener(name, (function(){
+            return function(e){
+                 fn.call(this, normaliseEvent(e)); 
+            };
+        })(), false);
+    }
+    else if(node.attachEvent){
+        node.attachEvent('on'+name, (function(){
+            return function(e){
+                fn.call(this, normaliseEvent(e));
+            };
+        })());
+    }
+}
+
+function normaliseEvent(e){
+     //Säkerställ att vi har tillgång till eventen genom variabeln "event"
+    event = e || window.event;
+    
+    if(!event.stopPropagation){
+        event.stopPropagation=function(){this.cancelBubble=true;};
+        event.preventDefault=function(){this.returnValue=false;};
+    }
+    if(!event.stop){
+        event.stop=function(){
+            this.stopPropagation();
+            this.preventDefault();
+        };
+    }
+    if (event.srcElement && !event.target) {
+		event.target = event.srcElement;
+	}
+    return event;
+}
+
+
+
+}
+function hide(){
+	setTimeout((function(id){
+		return function(){
+			_hide(id);
+		}
+	})(arguments[0]) ,arguments[1] || 0)
+}
+function _hide(id){
+	var elem=document.getElementById(id);
+	elem.style.display='none';
+}
+
+
+
+
+
+</script>
+
+</head>
+<body>
+	<form>
+	<div id="div">
+<input type="submit" id="knapp" value="skicka" />
+	</div>
+	<form>
+
+<div id="innehall" >Detta syns</div>
+</body>
+</html>
